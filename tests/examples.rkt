@@ -49,8 +49,8 @@
   ;; Using a refutationally complete search strategy solves the problem.
   (run*/step parallel-step (q) (reverseo q '(3 2 1))))
 
-(displayln
-"We can explore the backwards reverseo query to observe its bad behavior.")
+(displayln)
+"We can explore the backwards reverseo query to observe its bad behavior."
 (displayln "Stop exploring by triggering EOF (probably Ctrl-D).")
 (explore step (query (q) (reverseo q '(3 2 1))))
 
@@ -81,7 +81,7 @@
          (== `(,a . ,d) e*)
          (lookupo i* e* value))))))
 
-(displayln
+(displayln)
 "We can solve simple programming-by-example (PBE) problems by running our
 interpreter backwards on multiple examples.  Here, we'll synthesize a program
 that repeats the input three times using two examples.
@@ -91,16 +91,16 @@ remain dormant until the first example is fully satisfied.  This delayed
 feedback means we may deeply explore a hopeless program even when there is
 shallow evidence that it will fail the second example.  For example, we may
 uselessly consider several programs of the form (cons (quote 0) _) when no such
-program could ever succeed on the second example.")
+program could ever succeed on the second example."
 (displayln "Stop exploring by triggering EOF (probably Ctrl-D).")
 (explore step
   (query (program)
     (evalo program '(0) '(0 0 0))
     (evalo program '(1) '(1 1 1))))
 
-(displayln
+(displayln)
 "Using parallel-step allows us to expand constraints from both examples
-simultaneously, pruning impossibilities much sooner.")
+simultaneously, pruning impossibilities much sooner."
 (displayln "Stop exploring by triggering EOF (probably Ctrl-D).")
 (explore parallel-step
   (query (program)
