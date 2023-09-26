@@ -1,33 +1,15 @@
-#lang racket
-(provide
-  (all-from-out "common.rkt")
-  disj
-  conj
-  relate
-  ==
-  =/=
-  symbolo
-  stringo
-  numbero
-  not-symbolo
-  not-stringo
-  not-numbero
-  mplus
-  bind
-  pause
-  mature
-  mature?)
+#lang racket/unit
 
-(require "common.rkt")
+(require "microk-sig.rkt" "common.rkt")
 
+(import)
+(export microk^)
 
 ;; higher-order microKanren
 
 (define (mature? s) (or (not s) (pair? s)))
 (define (mature s)
   (if (mature? s) s (mature (s))))
-
-
 
 (define (disj g1 g2)
   (lambda (st) (mplus (pause st g1)
