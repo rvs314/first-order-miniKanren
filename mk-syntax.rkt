@@ -5,8 +5,10 @@
 (import (prefix μ: microk^))
 (export mk^) 
 
-(define disj   μ:disj)
-(define conj   μ:conj)
+;; This is gross, but necessary due to the
+;; restriction that you can't export an import
+(define disj μ:disj)
+(define conj μ:conj)
 (define relate μ:relate)
 (define == μ:==)
 (define =/= μ:=/=)
